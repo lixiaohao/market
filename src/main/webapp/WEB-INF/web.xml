@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	 version="2.4">
+
+	<display-name>blog</display-name>
+
+	 <!--  
+	      There are three means to configure Wickets configuration mode and they are
+	      tested in the order given. 
+	      1) A system property: -Dwicket.configuration
+	      2) servlet specific <init-param>
+	      3) context specific <context-param>
+	      The value might be either "development" (reloading when templates change)
+	      or "deployment". If no configuration is found, "development" is the default.
+	-->
+
+	<!-- 加载 上下文中的配置文件-->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+		classpath:applicationContext-hbt.xml
+		</param-value>
+	</context-param>
+	
+	<!-- 启动spring容器的监听器，加载上下文中的sprig配置文件地址 -->
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+
+
+<!-- 配置servlet -->
+	<servlet>
+		<servlet-name>dispatcherServlet</servlet-name>
+		<servlet-class>
+			org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		    <!-- 这里的参数如果不配置，则默认查找web-inf下的{servlet-name}-servlet.xml文件 -->
+    <init-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/dispatcherServlet-servlet.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+		
+	</servlet>
+ 	<servlet-mapping>
+		<servlet-name>dispatcherServlet</servlet-name>
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping> 
+
+	 <servlet-mapping>
+		<servlet-name>dispatcherServlet</servlet-name>
+		<url-pattern>*.htm</url-pattern>
+	</servlet-mapping> 
+
+	 <!-- <servlet-mapping>
+		<servlet-name>dispatcherServlet</servlet-name>
+		<url-pattern>*.jsp</url-pattern>
+	</servlet-mapping> -->
+
+</web-app>
