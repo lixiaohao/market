@@ -2,11 +2,11 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
 		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping auto-import="true" default-lazy="false">
-	<class name="com.market.demo" table="position">
+	<class name="com.market.demo.model.Position" table="position">
 		<id name="id" column="position_id">
 			<generator class="assigned" />
 		</id>
 		<property name="name" column="position_name" />
-		<property name="forumDesc" column="position_deparment" />
+		<property name="deparment" column="position_deparment" />
 	</class>
 </hibernate-mapping>

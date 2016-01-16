@@ -1,35 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-    http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context-3.0.xsd
-    http://www.springframework.org/schema/aop
-    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
-    http://www.springframework.org/schema/tx
-    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
-    <context:component-scan base-package="com.market.demo.dao"/>	
-    <!-- <context:component-scan base-package="com.baobaotao.service.hibernate"/> -->	
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+    
+    <context:annotation-config/>
+    
+    <context:component-scan base-package="com.market.demo.dao"/>
+     <context:component-scan base-package="com.market.demo"/>	
     
 	<context:property-placeholder location="classpath:jdbc.properties" />
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close"
 		p:driverClassName="${jdbc.driverClassName}"
 		p:url="${jdbc.url}"
 		p:username="${jdbc.username}"
-		p:password="${jdbc.password}"/>
+		p:password="${jdbc.password}">
+    </bean>
+    <!-- init-method="init"
+		destroy-method="close"  -->
     
     <!-- 直接使用hibernate配置 -->
-    <!--  
-     <bean id="sessionFactory"
-		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
-		p:configLocation="classpath:hibernate.cfg.xml"/>
-    --> 	
+    
 	 <bean id="lobHandler" 
 	       class="org.springframework.jdbc.support.lob.DefaultLobHandler"
 	       lazy-init="true" />
@@ -40,11 +39,11 @@
 		<!-- p:lobHandler-ref="lobHandler" -->
 		
 		<!-- 配置hibernate的实体类的映射文件 -->
-		<!-- <property name="mappingLocations">
+		 <property name="mappingLocations">
 			<list>
-				<value>calsspath*:/com/heh.cml</value>
+				<value>classpath*:model/position.hbm.xml</value>
 			</list>
-		</property> -->
+		</property> 
 		
         <property name="hibernateProperties">
             <props>
@@ -54,26 +53,47 @@
                 <prop key="hibernate.show_sql">
                     true
                 </prop>
+                <prop key="hibernate.current_session_context_class">thread</prop>
             </props>
         </property>		
 	</bean>
     
     <!-- 配置事务管理 -->
-    <bean id="hibernateTemplate"
+   <!--  <bean id="hibernateTemplate"
           class="org.springframework.orm.hibernate3.HibernateTemplate"
-          p:sessionFactory-ref="sessionFactory"/>
+          p:sessionFactory-ref="sessionFactory"/> -->
      
-<!-- 	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate3.HibernateTransactionManager"
-		p:sessionFactory-ref="sessionFactory" /> -->
 		
-		<!-- 配置事务管理 -->
-		<bean id="transactionManager"
-        class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-        <property name="dataSource" ref="dataSource" />
-        <property name="sessionFactory" ref="sessionFactory" />
-  </bean>
+		<!-- 配置事务管理开始-->
 		
-	<tx:annotation-driven transaction-manager="transactionManager"/>
+		<!--配置事务容器开始 -->
+		 <!-- <bean id="transactionManager"
+	        class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+	        <property name="dataSource" ref="dataSource" />
+	        <property name="sessionFactory" ref="sessionFactory" />
+ 		 </bean>  -->
+		<!--配置事务容器结束 -->
+	<!-- 开启事务注解功能 -->
+	<!-- <tx:annotation-driven transaction-manager="transactionManager"/> -->
+	<!-- 配置事务管理结束-->
 	
+		<!-- 配置事务容器 -->
+	<bean id="transactionManager"
+	        class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+	        <property name="sessionFactory" ref="sessionFactory" />
+ 		 </bean>
+	<!-- 定义事务规则 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="modify*" propagation="REQUIRED" />
+			<tx:method name="del*" propagation="REQUIRED" />
+			<tx:method name="*" propagation="REQUIRED" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	<!-- 定义事务入口 -->
+	<aop:config>
+		<aop:pointcut id="allDaoMethod" expression="execution(* com.market.demo.service.*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="allDaoMethod" />
+	</aop:config>
 </beans>
