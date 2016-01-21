@@ -29,6 +29,13 @@ public class UserController {
 	public String index(){
 		System.out.println("½øÀ´ÁË!");
 		
+		Position position = new Position();
+		position.setId(2l);
+		position.setDeparment("999");
+		position.setName("ºÇºÇ34241");
+		positionService.update(position);
+		
+		
 		List<Position> pList = new ArrayList<Position>();
 		pList = positionService.findAll();
 		System.out.println("-----");

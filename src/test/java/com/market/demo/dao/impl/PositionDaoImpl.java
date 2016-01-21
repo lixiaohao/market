@@ -5,8 +5,8 @@ package com.market.demo.dao.impl;
 
 import org.springframework.stereotype.Repository;
 
+import com.market.basedao.BaseDaoImpl;
 import com.market.demo.dao.PositionDao;
-import com.market.demo.dao.basedao.BaseDaoImpl;
 import com.market.demo.model.Position;
 
 /**

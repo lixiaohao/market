@@ -56,4 +56,7 @@
 		<url-pattern>*.htm</url-pattern>
 	</servlet-mapping> 
  	 
+ 	 
+ 	 
+ 	 
 </web-app>

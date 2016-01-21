@@ -8,6 +8,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.market.demo.model.Position;
 import com.market.demo.service.PositionService;
@@ -16,7 +18,9 @@ import com.market.demo.service.PositionService;
  * Created by Administrator on 2016/1/8.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"/applicationContext-hbt.xml"})
+@TransactionConfiguration(defaultRollback = true)
+//@Transactional()
+@ContextConfiguration(locations={"/applicationContext-hbt1.xml"})
 public class DemoServcie {
 	@Autowired
 	private PositionService positionService;
@@ -35,5 +39,20 @@ public class DemoServcie {
 	public void findById(){
 		Position position = positionService.findById(1l);
 		System.out.println(position.toString());
+	}
+	       
+	@Test
+	public void clearTest(){
+		positionService.clear();
+	}
+	
+	@Test
+	public void updateTest(){
+		Position position = new Position();
+		position.setId(1l);
+		position.setDeparment("999");
+		position.setName("บวบว");
+		
+		positionService.update(position);
 	}
 }

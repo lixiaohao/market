@@ -14,8 +14,8 @@
     
     <context:annotation-config/>
     
-    <context:component-scan base-package="com.market.dao"/>
-    <context:component-scan base-package="com.market"/>	
+    <context:component-scan base-package="com.market.demo.dao"/>
+    <context:component-scan base-package="com.market.demo"/>	
 
 	<context:property-placeholder location="classpath:jdbc.properties" />
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
@@ -41,7 +41,7 @@
 		<!-- 配置hibernate的实体类的映射文件 -->
 		 <property name="mappingLocations">
 			<list>
-				<value>classpath*:model/market.hbm.xml</value>
+				<value>classpath*:model/position.hbm.xml</value>
 			</list>
 		</property> 
 		

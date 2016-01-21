@@ -22,4 +22,12 @@ public interface PositionService {
 	 * @return
 	 */
 	public Position findById(Long id);
+	
+	/****
+	 * Çå¿Õ
+	 */
+	public void clear();
+	
+	public void update(Position position);
+	
 }
