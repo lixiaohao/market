@@ -10,7 +10,7 @@ import com.market.dao.MarketDao;
 import com.market.model.Market;
 
 /**
- * @author Administrator
+ * @author LiXiaoHao
  *
  */
 @Repository

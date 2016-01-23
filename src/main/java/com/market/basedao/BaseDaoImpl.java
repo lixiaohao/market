@@ -27,7 +27,6 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	 */
 	private static final long serialVersionUID = 1L;
 	protected Class<T> entityClazz;
-//	@Autowired
 	private SessionFactory sessionFactory;
 	
 	private  Session session;
@@ -57,7 +56,6 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	protected  Session getSession(){
 		if(session==null || !session.isOpen()){
 			return sessionFactory.getCurrentSession();
-//			return sessionFactory.openSession();
 		}
 		return session;
 	}

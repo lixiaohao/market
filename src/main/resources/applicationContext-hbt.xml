@@ -54,7 +54,7 @@
                     true
                 </prop>
                 <prop key="connection.autocommit">true</prop>
-                <!-- <prop key="hibernate.current_session_context_class">thread</prop> --> 
+                <!-- <prop key="hibernate.current_session_context_class">thread</prop> -->
             </props>
         </property>		
 	</bean>
@@ -62,33 +62,28 @@
 		
 		
 	
-		<!-- 配置事务容器 -->
+	<!-- 配置事务容器 -->
 	 <bean id="transactionManager"
 	        class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 	        <property name="sessionFactory" ref="sessionFactory" />
- 		 </bean>
+ 	</bean>
+ 	
 	<!-- 定义事务规则 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 		<tx:method name="update*" propagation="REQUIRED" />
 			<tx:method name="find*" propagation="REQUIRED" />
-			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED" />
 			<tx:method name="modify*" propagation="REQUIRED" />
 			<tx:method name="del*" propagation="REQUIRED" />
 			<tx:method name="*" propagation="REQUIRED" read-only="true" />
 		</tx:attributes>
 	</tx:advice>
 	
-	<!-- <tx:annotation-driven transaction-manager="transactionManager"/> -->
 	<!-- 定义事务入口 -->
 	 <aop:config proxy-target-class="true">
-		<!-- <aop:pointcut id="allDaoMethod" expression="execution(* com.market.demo.service+.*(..))" /> -->
-		<aop:pointcut id="allDaoMethod" expression="execution(* com.market.demo.service.impl.PositionServiceImpl.*(..))" />
+		<aop:pointcut id="allDaoMethod" expression="execution(* com.market.service.impl.MarketServiceImpl.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="allDaoMethod" />
 	</aop:config>
 	
-	<!-- <context:component-scan base-package="com.market.demo">
-    <context:exclude-filter type="regex" expression=".*ServiceImpl"/>
-	</context:component-scan>
-	<bean id="positionService" class="com.market.demo.service.impl.PositionServiceImpl"/> -->
 </beans>

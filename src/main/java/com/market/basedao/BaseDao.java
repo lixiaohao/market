@@ -31,7 +31,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Company: Newtouch
  * </p>
  * 
- * @author WangLijun
+ * @author LiXiaoHao
  * @version 1.0
  */
 public interface BaseDao<T> extends Serializable {

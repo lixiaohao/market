@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.market.demo.model.Position;
 import com.market.demo.service.PositionService;
@@ -51,8 +50,18 @@ public class DemoServcie {
 		Position position = new Position();
 		position.setId(1l);
 		position.setDeparment("999");
-		position.setName("最最");
+		position.setName("最最fsafs");
 		
 		positionService.update(position);
+	}
+	
+	@Test
+	public void saveTest(){
+		Position position = new Position();
+//		position.setId(3l);
+		position.setDeparment("1234");
+		position.setName("savesss");
+		
+		positionService.save(position);;
 	}
 }

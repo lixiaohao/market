@@ -4,6 +4,7 @@
 package com.market.model;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author LiXiaoHao
@@ -21,8 +22,10 @@ public class Market {
 	private String 	comment;
 	/**浏览量**/
 	private Integer pageViews;
+	/**图片**/
+	private List<String> images;
 	/**创建日期**/
-	private Date    createDate;
+	private Date    createDate = new Date();
 	/**
 	 * 
 	 */
@@ -100,6 +103,18 @@ public class Market {
 	 */
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
+	}
+	/**
+	 * @return the images
+	 */
+	public List<String> getImages() {
+		return images;
+	}
+	/**
+	 * @param images the images to set
+	 */
+	public void setImages(List<String> images) {
+		this.images = images;
 	}
 	
 	

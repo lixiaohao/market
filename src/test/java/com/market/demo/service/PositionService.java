@@ -29,5 +29,6 @@ public interface PositionService {
 	public void clear();
 	
 	public void update(Position position);
-	
+
+	public void save(Position position);
 }

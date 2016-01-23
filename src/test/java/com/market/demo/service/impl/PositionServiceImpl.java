@@ -45,5 +45,9 @@ public class PositionServiceImpl implements PositionService {
 		this.positionDao.update(position1);
 		this.positionDao.update(position2);
 	}
+	public void save(Position position) {
+		// TODO Auto-generated method stub
+		this.positionDao.save(position);
+	}
 
 }

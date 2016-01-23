@@ -4,11 +4,11 @@
 <hibernate-mapping auto-import="true" default-lazy="false">
 	<class name="com.market.model.Market" table="market">
 		<id name="id" column="ID">
-			<generator class="native" />
+			<generator class="increment" />
 		</id>
 		<property name="name" column="NAME" />
 		<property name="address" column="ADDRESS" />
-		<property name="comment" column-="COMMENT" />
+		<property name="comment" column="COMMENT" />
 		<property name="pageViews" column="PAGE_VIEWS" />
 		<property name="createDate" column="CREATE_DATE" />
 	</class>
