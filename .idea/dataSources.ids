@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - test@localhost" uuid="3163c8af-4c78-4855-ae10-de4fa5167823">
+    <database-info product="MySQL" version="5.5.37" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="test"/>
+    <table name="bas_policy" schema="" catalog="test" type="TABLE">
+      <column name="Policy_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="CREATE_BY" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="5Yib5bu65Lq6SUQ="/>
+      <column name="CREATE_DATE" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93" remarks="5Yib5bu65pel5pyf"/>
+      <column name="UPDATE_BY" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="5pu05paw5Lq6SUQ="/>
+      <column name="UPDATE_DATE" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93" remarks="5pu05paw5pel5pyf"/>
+      <column name="OPT_COUNTER" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="6K6w5b2V5pON5L2c5qyh"/>
+      <column name="DELETE_DATE" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93" remarks="5Yig6Zmk5pel5pyf"/>
+      <column name="MARK_FOR_DELETE" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA==" remarks="5piv5ZCm5qCH6K6w5Yig6ZmkIDAg5pyq5Yig6ZmkICAgMSDooajnpLrliKDpmaQ="/>
+      <column name="POLICY_TYPE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5L+d6Zmp56eN57G7"/>
+      <column name="POLICY_beneficiary" sqlType="VARCHAR" precision="266" scale="0" nullable="true" jdbcType="12" remarks="5Y+X55uK5Lq6"/>
+      <column name="POLICY_NUM" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="5oqV5L+d5Lq65pWw"/>
+      <primary-key name="PRIMARY" columns="Policy_ID"/>
+    </table>
+    <table name="position" schema="" catalog="test" type="TABLE">
+      <column name="position_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="position_name" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="position_deparment" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="position_id"/>
+    </table>
+  </data-source>
+  <data-source name="MySQL - market@localhost" uuid="7b6d4844-a140-4846-b324-9105f6701266">
+    <database-info product="MySQL" version="5.5.37" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="market"/>
+    <table name="market" schema="" catalog="market" type="TABLE">
+      <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5ZCN56ew"/>
+      <column name="ADDRESS" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="IMAGES" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5Zyw5Z2A"/>
+      <column name="COMMENT" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5o+P6L+w"/>
+      <column name="PAGE_VIEWS" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="CREATE_DATE" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93" remarks="5Yib5bu65pe26Ze0"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="position" schema="" catalog="market" type="TABLE">
+      <column name="position_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="position_name" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="position_deparment" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="position_id"/>
+    </table>
+  </data-source>
+</component>

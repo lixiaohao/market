@@ -89,6 +89,8 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	}
 	public int updateHQL(String hql, Map<String, ?> params) {
 		// TODO Auto-generated method stub
+		session = getSession();
+//		session.
 		return 0;
 	}
 	public void flush() {
@@ -164,6 +166,12 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	public long getsSequenceNextval(String sequenceName) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	@SuppressWarnings("unchecked")
+	public List<T> queryByHQL(String hql) {
+		// TODO Auto-generated method stub
+		Query query = getSession().createQuery(hql);
+		return query.list();
 	}
 
 

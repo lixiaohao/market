@@ -10,59 +10,26 @@
       http://www.springframework.org/schema/context    
       http://www.springframework.org/schema/context/spring-context.xsd    
       http://www.springframework.org/schema/mvc
-      http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
-      http://www.springframework.org/schema/task
-     http://www.springframework.org/schema/task/spring-task-4.0.xsd">
-      
-      
+      http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd"
+     >
+       
       <context:annotation-config />
 	<!-- 扫描web包，应用Spring的注解 -->
-	<context:component-scan base-package="com.market.demo.controller"/>
-	<!-- 拦截器 -->
-    <!-- 
-    	<mvc:interceptors>
-        <mvc:interceptor>
-            <mvc:mapping path="/**" />
-            <bean class="com.lxh.interceptor.LonginInterceptor" >
-            </bean> 
-        </mvc:interceptor>
-    </mvc:interceptors>	
-     -->
+	<context:component-scan base-package="com.market.controller"/>
 	
 	 <!-- 支持异步方法执行 -->
-    <task:annotation-driven /> 
-
-    <!-- 视图解析器和json解析器 -->
-    <!-- <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-        <property name="mediaTypes">
-            <map>
-                <entry key="html" value="text/html"/>
-                <entry key="json" value="application/json"/>
-            </map>
-        </property>
-        <property name="viewResolvers">
-            <list>
-                <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-                    <property name="prefix" value="/WEB-INF/view/" /> 可为空,方便实现自已的依据扩展名来选择视图解释类的逻辑
-                    <property name="suffix" value=".jsp"/>
-                </bean>
-            </list>
-        </property>
-        <property name="defaultViews">
-            <list>
-                <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
-            </list>
-        </property>
-    </bean> -->
-	
-	
+    <!-- <task:annotation-driven /> --> 
+    <!-- http://www.springframework.org/schema/task
+     http://www.springframework.org/schema/task/spring-task-4.0.xsd -->
+	 <mvc:default-servlet-handler />
+	<mvc:resources location="/resources/" mapping="/resources/**"/>
+	<mvc:resources location="/WEB-INF/view/" mapping="/view/**"/>
 	<!-- 配置视图解析器，将ModelAndView及字符串解析为具体的页面 -->
-	<bean
+	<!-- <bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		p:viewClass="org.springframework.web.servlet.view.JstlView" 
 		p:prefix="/WEB-INF/view/"
-		p:suffix=".jsp" /> 
-		
+		p:suffix=".jsp" /> -->
 		
 </beans>
 

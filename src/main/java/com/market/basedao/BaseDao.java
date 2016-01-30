@@ -122,7 +122,12 @@ public interface BaseDao<T> extends Serializable {
 	 */
 	public List<T> query(String hql, Map<String, ?> params);
 
-
+	/***
+	 * 根据HQL，参数进行查询，
+	 * @param hql  HQL语句
+	 * @return List<T>
+	 */
+	public List<T> queryByHQL(String hql);
 	/***
 	 * 根据HQL、params的参数，用于计算返回查询的行�?
 	 * @param countHql

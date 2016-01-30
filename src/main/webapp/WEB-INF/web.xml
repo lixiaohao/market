@@ -44,7 +44,6 @@
         <param-value>/WEB-INF/dispatcherServlet-servlet.xml</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
-		
 	</servlet>
  	<servlet-mapping>
 		<servlet-name>dispatcherServlet</servlet-name>
@@ -55,8 +54,11 @@
 		<servlet-name>dispatcherServlet</servlet-name>
 		<url-pattern>*.htm</url-pattern>
 	</servlet-mapping> 
+	
+ 	 <!--这里可以配置多个默认访问文件-->
  	 
- 	 
- 	 
+ 	 <welcome-file-list>
+ 	 	<welcome-file>index.html</welcome-file>
+ 	 </welcome-file-list>
  	 
 </web-app>

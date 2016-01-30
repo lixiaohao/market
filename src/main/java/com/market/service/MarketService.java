@@ -6,7 +6,7 @@ package com.market.service;
 import com.market.model.Market;
 
 /**
- * @author Administrator
+ * @author LiXiaoHao
  *
  */
 public interface MarketService {

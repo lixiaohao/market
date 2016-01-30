@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="js/test.js" ></script>
 </head>
 <body>
 呵呵呵呵

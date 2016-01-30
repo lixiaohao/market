@@ -32,6 +32,28 @@ public class Market {
 	public Market() {
 		super();
 	}
+	
+	/**
+	 * @param id
+	 * @param name
+	 * @param address
+	 * @param comment
+	 * @param pageViews
+	 * @param images
+	 * @param createDate
+	 */
+	public Market(Long id, String name, String address, String comment,
+			Integer pageViews, List<String> images, Date createDate) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.address = address;
+		this.comment = comment;
+		this.pageViews = pageViews;
+		this.images = images;
+		this.createDate = createDate;
+	}
+
 	/**
 	 * @return the id
 	 */

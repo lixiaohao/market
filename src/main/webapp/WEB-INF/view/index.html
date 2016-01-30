@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>首页</title>
+<link rel="stylesheet" type="text/css" href="/market/resources/css/index.css"
+</head>
+
+<body>
+<div class='main' ng-app='myApp' ng-controller='myContro'>
+	<span>测试一下</span>
+    name:<input type="text" ng-model='name' /><br/>
+    {{name}}
+    <br/>
+    <ul>
+    	<li ng-repeat='x in names'>
+        {{x.Name + ', ' + x.Country}}
+        </li>
+    </ul>
+</div>
+
+<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<script src="/market/resources/json/index.js" ></script>
+
+</body>
+</html>
